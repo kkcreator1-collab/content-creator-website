@@ -12,16 +12,17 @@
 
 <body class="font-sans">
 
-    <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
+    <nav class="bg-white shadow-md relative z-50">
+        <div class="flex justify-between items-center p-6 max-w-7xl mx-auto">
         <div class="flex flex-col items-center gap-1">
-            <div class="flex items-center gap-2">
-                <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-black font-bold"><img
-                        src="assets/images/icon.jpeg" alt="KK Creator Logo" class="reveal w-12 h-auto opacity-80">
+            <div class="flex items-center gap-2 font-bold">
+                <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center"> <img
+                        src="assets/images/icon.jpeg" alt="KK Creator Logo" class="w-8 h-8 object-contain  opacity-100">
                 </div>
                 <span class="font-bold text-xl">KK CREATOR</span>
             </div>
         </div>
-        <div class="hidden md:flex gap-8 text-sm font-medium">
+        <div class="flex gap-8 text-sm font-medium text-black">
             <a href="index.php" class="hover:text-pink-500">Home</a>
             <a href="pages/about.php" class="hover:text-pink-500">About us</a>
             <a href="pages/work.php" class="hover:text-pink-500">Work</a>
@@ -71,7 +72,7 @@
             Competition System
         </button>
 
-        <button class="tricolor-btn">
+        <button class="tricolor-btn" onclick="location.href='pages/prize.php';">
             Prize List
         </button>
 
@@ -99,35 +100,56 @@
         <h2 class="text-3xl font-bold mb-2">Grow your career with Socio Commerce</h2>
         <p class="text-gray-400 max-w-2xl mx-auto px-6">Learn how to enhance your online presence, create smarter
             content, and grow faster using AI-powered tools.</p>
-<br>
+        <br>
         <section class="social-section">
   <h2>Follow Us on Social Media</h2>
-  <p class="social-desc">
+  <p class="social-desc text-2xl font-semibold whitespace-nowrap">
     Stay connected with us for latest updates, competitions, tips and announcements.
   </p>
 
-  <div class="social-box-container">
-    <div class="social-box facebook">
-      <h3>Facebook</h3>
-      <p>Join our Facebook community for daily updates and discussions.</p>
-      <a href="#" target="_blank">Visit Page</a>
-    </div>
+            <div class="social-box-container grid grid-cols-3 gap-6 place-items-center">
+                    <!-- Facebook -->
+                    <div class="social-box facebook h-[350px] flex flex-col justify-between items-center p-6">
+                        <img src="assets/images/facebook.jpeg" alt="Facebook Icon" class="social-icon">
+                        <h3>Facebook</h3>
+                        <p>Join our Facebook community for daily updates and discussions.</p>
+                        <a href="https://www.facebook.com" target="_blank">Visit Page</a>
+                    </div>
+                    <!-- Instagram -->
+                    <div class="social-box instagram max-auto">
+                        <img src="assets/images/instagram.jpeg" alt="Instagram Icon" class="social-icon">
+                        <h3>Instagram</h3>
+                        <p>Follow us for reels, stories and behind-the-scenes content.</p>
+                        <a href="https://www.instagram.com" target="_blank">Follow Now</a>
+                    </div>
+                    <!-- YouTube -->
+                    <div class="social-box youtube h-[350px] flex flex-col justify-between items-center">
+                        <img src="assets/images/youtube.jpeg" alt="YouTube Icon" class="social-icon">
+                        <h3>YouTube</h3>
+                        <p>Subscribe to watch tutorials, events and exclusive videos.</p>
+                        <a href="https://www.youtube.com" target="_blank">Subscribe</a>
+                    </div>
+                    <!-- Snapchat -->
+                    <div class="social-box snapchat max-auto">
+                        <img src="assets/images/snapchat.jpeg" alt="Snapchat Icon" class="social-icon">
+                        <h3>Snapchat</h3>
+                        <p>Follow us for daily snaps, updates and behind-the-scenes moments.</p>
+                        <a href="https://www.snapchat.com" target="_blank">Follow Now</a>
+                    </div>
+                    <!-- Twitter -->
+                    <div class="social-box twitter h-[350px] flex flex-col justify-between items-center">
+                        <img src="assets/images/twitter.jpeg" alt="Twitter Icon" class="social-icon">
+                        <h3>Twitter</h3>
+                        <p>Follow us for latest updates, announcements and trending posts.</p>
+                        <a href="https://www.x.com" target="_blank">Follow Now</a>
+                    </div>
 
-    <div class="social-box instagram">
-      <h3>Instagram</h3>
-      <p>Follow us for reels, stories and behind-the-scenes content.</p>
-      <a href="#" target="_blank">Follow Now</a>
-    </div>
+                </div>
+            </div>
 
-    <div class="social-box youtube">
-      <h3>YouTube</h3>
-      <p>Subscribe to watch tutorials, events and exclusive videos.</p>
-      <a href="#" target="_blank">Subscribe</a>
-    </div>
-  </div>
-</section>
+        </section>
 
-<br>
+        <br>
         <p class="text-gray-400">© 2026 KK CREATOR. All rights reserved.</p>
     </footer>
 

@@ -13,18 +13,21 @@
 <body class="font-sans">
 
     <nav class="flex justify-between items-center p-6 max-w-7xl mx-auto">
-        <div class="flex items-center gap-2">
-            <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-black font-bold">
-                <img src="../assets/images/icon.jpeg" alt="Logo" class="w-12 h-auto">
+        <div class="flex flex-col items-center gap-1">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-black font-bold"><img
+                        src="../assets/images/icon.jpeg" alt="KK Creator Logo" class="reveal w-12 h-auto opacity-80">
+                </div>
+                <span class="font-bold text-xl">KK CREATOR</span>
             </div>
-            <span class="font-bold text-xl uppercase">KK CREATOR</span>
         </div>
         <div class="hidden md:flex gap-8 text-sm font-medium">
             <a href="../index.php" class="hover:text-pink-500">Home</a>
-            <a href="about.php" class="hover:text-pink-500">About us</a>
-            <a href="work.php" class="text-pink-500">Work</a>
-            <a href="info.php" class="hover:text-pink-500">Info</a>
+            <a href="../pages/about.php" class="hover:text-pink-500">About us</a>
+            <a href="../pages/work.php" class="hover:text-pink-500">Work</a>
+            <a href="../pages/info.php" class="hover:text-pink-500">Info</a>
         </div>
+        <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-sm">Get Started</button>
     </nav>
 
     <header class="text-center py-12 px-4">
