@@ -66,8 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="text-gray-400">Fill out the details below to register for the 3C Pure Gold Trophy event.</p>
         </div>
 
-        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10" action="../pages/register.php"
-            method="POST" enctype="multipart/form-data">
+        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10"
+            action="../pages/register.php" method="POST" enctype="multipart/form-data">
             <div>
                 <label class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
                 <input type="text" placeholder="Enter name" required
