@@ -1,3 +1,46 @@
+<?php
+require '../vendor/autoload.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $uri = getenv('MONGODB_URI');
+        $client = new MongoDB\Client($uri);
+        $collection = $client->kk_creator->registrations;
+
+        // Capture data into an array for the alert
+        $formData = [
+            'fullname'  => htmlspecialchars($_POST['fullname']),
+            'email'     => htmlspecialchars($_POST['email']),
+            'portfolio' => htmlspecialchars($_POST['portfolio']),
+            'category'  => $_POST['category'],
+            'mobile'    => htmlspecialchars($_POST['mobile']),
+            'address'   => htmlspecialchars($_POST['address']),
+            'image'     => $_FILES['user_image']['name'],
+            'timestamp' => date('Y-m-d H:i:s')
+        ];
+
+        $result = $collection->insertOne($formData);
+
+        if ($result->getInsertedCount()) {
+            // Prepare a string for the JavaScript alert
+            $alertMsg = "Registration Successful!\\n\\n";
+            $alertMsg .= "Name: " . $formData['fullname'] . "\\n";
+            $alertMsg .= "Email: " . $formData['email'] . "\\n";
+            $alertMsg .= "Category: " . $formData['category'] . "\\n";
+            $alertMsg .= "Mobile: " . $formData['mobile'] . "\\n";
+            $alertMsg .= "Address: " . $formData['address'] . "\\n";
+            $alertMsg .= "File: " . $formData['image'];
+
+            echo "<script>
+                alert('$alertMsg');
+                window.location.href='../index.php';
+            </script>";
+        }
+    } catch (Exception $e) {
+        die("Database Error: " . $e->getMessage());
+    }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +79,8 @@
             <p class="text-gray-400">Fill out the details below to register for the 3C Pure Gold Trophy event.</p>
         </div>
 
-        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10">
+        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10" action="register.php"
+            method="POST" enctype="multipart/form-data">
             <div>
                 <label class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
                 <input type="text" placeholder="Enter name" required
@@ -98,30 +142,3 @@
 </body>
 
 </html>
-
-<?php
-require '../vendor/autoload.php'; // Composer's autoloader
-
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        // Use environment variables for security on Render
-        $uri = getenv('MONGODB_URI');
-        $client = new MongoDB\Client($uri);
-        $collection = $client->kk_creator->registrations;
-
-        $result = $collection->insertOne([
-            'fullname' => $_POST['fullname'],
-            'email' => $_POST['email'],
-            'portfolio' => $_POST['portfolio'],
-            'mobile' => $_POST['mobile'],
-            'timestamp' => new UTCDateTime()
-        ]);
-
-        if ($result->getInsertedCount()) {
-            $success = true;
-        }
-    } catch (Exception $e) {
-        $error = "Database Error: " . $e->getMessage();
-    }
-}
-?>
