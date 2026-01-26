@@ -6,6 +6,10 @@ RUN apt-get update && apt-get install -y \
     unzip \
     && rm -rf /var/lib/apt/lists/*
 
+# Ensure this line is in your Dockerfile to support the new database
+RUN apt-get update && apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
 # Install the PostgreSQL PDO extension
 RUN docker-php-ext-install pdo pdo_pgsql
 
