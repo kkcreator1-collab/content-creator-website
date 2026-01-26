@@ -1,16 +1,50 @@
 <?php
+// test_db.php
+
+$host     = getenv('DB_HOST');
+$dbname   = getenv('DB_NAME');
+$username = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+    $version = $pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
+    
+    // Convert success echo to alert
+    echo "<script>alert('✅ Connection Successful! MySQL version: " . addslashes($version) . "');</script>";
+} catch (PDOException $e) {
+    // Convert failure echo to alert
+    echo "<script>alert('❌ Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
+}
+?>
+<?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Database credentials from environment variables for Render
     $host     = getenv('DB_HOST');
     $dbname   = getenv('DB_NAME');
     $username = getenv('DB_USER');
     $password = getenv('DB_PASSWORD');
 
     try {
-        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $pdo = new PDO("mysql:host=$host", $username, $password);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Prepare data for alert and database
+        // Ensure database and table exist
+        $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbname` COLLATE 'utf8mb4_unicode_ci'");
+        $pdo->exec("USE `$dbname` text-black");
+
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            fullname VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            portfolio VARCHAR(255),
+            category VARCHAR(50),
+            mobile VARCHAR(20),
+            address TEXT,
+            image VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )");
+
+        // Prepare data
         $fullname  = htmlspecialchars($_POST['fullname']);
         $email     = htmlspecialchars($_POST['email']);
         $portfolio = htmlspecialchars($_POST['portfolio']);
@@ -19,20 +53,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $address   = htmlspecialchars($_POST['address']);
         $imageName = $_FILES['user_image']['name'];
 
-        // SQL Insertion
+        // Insertion
         $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
                 VALUES (?, ?, ?, ?, ?, ?, ?)";
         $stmt = $pdo->prepare($sql);
         $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
 
-        // Success Alert with all data
         $alertMsg = "Registration Successful!\\n\\n";
         $alertMsg .= "Name: $fullname\\n";
         $alertMsg .= "Email: $email\\n";
-        $alertMsg .= "Category: $category\\n";
-        $alertMsg .= "Mobile: $mobile\\n";
-        $alertMsg .= "Address: $address\\n";
-        $alertMsg .= "Image: $imageName";
+        $alertMsg .= "Category: $category";
 
         echo "<script>
             alert('$alertMsg');
