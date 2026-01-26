@@ -17,7 +17,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Install PHP dependencies
-RUN composer install --no-interaction --optimize-autoloader
+RUN composer install --no-interaction --optimize-autoloader --ignore-platform-req=ext-mongodb
 
 # Expose port 80
 EXPOSE 80
