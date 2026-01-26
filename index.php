@@ -20,7 +20,7 @@
                             src="assets/images/icon.jpeg" alt="KK Creator Logo"
                             class="w-10 h-10 rounded-md object-contain opacity-80">
                     </div>
-                    <span class="font-black text-2xl">KK CREATOR</span>
+                    <span class="font-black text-2xl text-black">KK CREATOR</span>
                 </div>
             </div>
             <div class="flex gap-8 text-sm font-medium text-black">
