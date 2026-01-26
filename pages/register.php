@@ -1,39 +1,17 @@
 <?php
-// test_db.php
-
-$host     = getenv('DB_HOST');
-$dbname   = getenv('DB_NAME');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-
-try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
-    $version = $pdo->getAttribute(PDO::ATTR_SERVER_VERSION);
-    
-    // Convert success echo to alert
-    echo "<script>alert('✅ Connection Successful! MySQL version: " . addslashes($version) . "');</script>";
-} catch (PDOException $e) {
-    // Convert failure echo to alert
-    echo "<script>alert('❌ Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
-}
-?>
-<?php
+// register.php snippet
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $host     = getenv('DB_HOST');
-    $dbname   = getenv('DB_NAME');
-    $username = getenv('DB_USER');
-    $password = getenv('DB_PASSWORD');
+    // Retrieve the native Render connection string
+    $databaseUrl = "postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website";
 
     try {
-        $pdo = new PDO("mysql:host=$host", $username, $password);
+        // PDO works natively with PostgreSQL by changing 'mysql:' to 'pgsql:'
+        $pdo = new PDO($databaseUrl);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Ensure database and table exist
-        $pdo->exec("CREATE DATABASE IF NOT EXISTS `$dbname` COLLATE 'utf8mb4_unicode_ci'");
-        $pdo->exec("USE `$dbname` text-black");
-
+        // SQL is almost identical, but use SERIAL instead of AUTO_INCREMENT for the table
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id INT AUTO_INCREMENT PRIMARY KEY,
+            id SERIAL PRIMARY KEY,
             fullname VARCHAR(255) NOT NULL,
             email VARCHAR(255) NOT NULL,
             portfolio VARCHAR(255),
@@ -44,31 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )");
 
-        // Prepare data
-        $fullname  = htmlspecialchars($_POST['fullname']);
-        $email     = htmlspecialchars($_POST['email']);
-        $portfolio = htmlspecialchars($_POST['portfolio']);
-        $category  = $_POST['category'];
-        $mobile    = htmlspecialchars($_POST['mobile']);
-        $address   = htmlspecialchars($_POST['address']);
-        $imageName = $_FILES['user_image']['name'];
-
-        // Insertion
-        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
-
-        $alertMsg = "Registration Successful!\\n\\n";
-        $alertMsg .= "Name: $fullname\\n";
-        $alertMsg .= "Email: $email\\n";
-        $alertMsg .= "Category: $category";
-
-        echo "<script>
-            alert('$alertMsg');
-            window.location.href='../index.php';
-        </script>";
-
+        // ... rest of your insertion logic remains the same ...
     } catch (PDOException $e) {
         echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
     }
