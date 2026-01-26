@@ -12,26 +12,28 @@
 
 <body class="font-sans">
 
-    <nav class="bg-white shadow-md relative z-50">
-        <div class="flex justify-between items-center p-6 max-w-7xl mx-auto">
-        <div class="flex flex-col items-center gap-1">
-            <div class="flex items-center gap-2 font-bold">
-                <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center"> <img
-                        src="assets/images/icon.jpeg" alt="KK Creator Logo" class="w-8 h-8 object-contain  opacity-100">
+    <nav class="bg-white shadow-md fixed top-0 left-0 w-full z-50">
+        <div class="flex justify-between items-center py-1 px-4 max-w-7xl mx-auto">
+            <div class="flex flex-col items-center gap-1">
+                <div class="flex items-center gap-1 font-bold">
+                    <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center"> <img
+                            src="assets/images/icon.jpeg" alt="KK Creator Logo"
+                            class="w-10 h-10 rounded-md object-contain opacity-80">
+                    </div>
+                    <span class="font-black text-2xl">KK CREATOR</span>
                 </div>
-                <span class="font-bold text-xl">KK CREATOR</span>
             </div>
-        </div>
-        <div class="flex gap-8 text-sm font-medium text-black">
-            <a href="index.php" class="hover:text-pink-500">Home</a>
-            <a href="pages/about.php" class="hover:text-pink-500">About us</a>
-            <a href="pages/work.php" class="hover:text-pink-500">Work</a>
-            <a href="pages/info.php" class="hover:text-pink-500">Info</a>
-        </div>
-        <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-sm">Get Started</button>
+            <div class="flex gap-8 text-sm font-medium text-black">
+                <a href="index.php" class="hover:text-pink-500">Home</a>
+                <a href="pages/about.php" class="hover:text-pink-500">About us</a>
+                <a href="pages/work.php" class="hover:text-pink-500">Work</a>
+                <a href="pages/info.php" class="hover:text-pink-500">Info</a>
+            </div>
+            <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-sm">Get
+                Started</button>
     </nav>
 
-    <header class="text-center py-16 px-4">
+    <header class="text-center pt-14 pb-10 px-4">
         <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
             <img src="assets/images/icon.jpeg" alt="KK Creator Logo"
                 class="reveal w-24 h-auto rounded-lg shadow-lg opacity-0">
@@ -102,49 +104,49 @@
             content, and grow faster using AI-powered tools.</p>
         <br>
         <section class="social-section">
-  <h2>Follow Us on Social Media</h2>
-  <p class="social-desc text-2xl font-semibold whitespace-nowrap">
-    Stay connected with us for latest updates, competitions, tips and announcements.
-  </p>
+            <h2>Follow Us on Social Media</h2>
+            <p class="social-desc text-2xl font-semibold whitespace-nowrap">
+                Stay connected with us for latest updates, competitions, tips and announcements.
+            </p>
 
-            <div class="social-box-container grid grid-cols-3 gap-6 place-items-center">
-                    <!-- Facebook -->
-                    <div class="social-box facebook h-[350px] flex flex-col justify-between items-center p-6">
-                        <img src="assets/images/facebook.jpeg" alt="Facebook Icon" class="social-icon">
-                        <h3>Facebook</h3>
-                        <p>Join our Facebook community for daily updates and discussions.</p>
-                        <a href="https://www.facebook.com" target="_blank">Visit Page</a>
-                    </div>
-                    <!-- Instagram -->
-                    <div class="social-box instagram max-auto">
-                        <img src="assets/images/instagram.jpeg" alt="Instagram Icon" class="social-icon">
-                        <h3>Instagram</h3>
-                        <p>Follow us for reels, stories and behind-the-scenes content.</p>
-                        <a href="https://www.instagram.com" target="_blank">Follow Now</a>
-                    </div>
-                    <!-- YouTube -->
-                    <div class="social-box youtube h-[350px] flex flex-col justify-between items-center">
-                        <img src="assets/images/youtube.jpeg" alt="YouTube Icon" class="social-icon">
-                        <h3>YouTube</h3>
-                        <p>Subscribe to watch tutorials, events and exclusive videos.</p>
-                        <a href="https://www.youtube.com" target="_blank">Subscribe</a>
-                    </div>
-                    <!-- Snapchat -->
-                    <div class="social-box snapchat max-auto">
-                        <img src="assets/images/snapchat.jpeg" alt="Snapchat Icon" class="social-icon">
-                        <h3>Snapchat</h3>
-                        <p>Follow us for daily snaps, updates and behind-the-scenes moments.</p>
-                        <a href="https://www.snapchat.com" target="_blank">Follow Now</a>
-                    </div>
-                    <!-- Twitter -->
-                    <div class="social-box twitter h-[350px] flex flex-col justify-between items-center">
-                        <img src="assets/images/twitter.jpeg" alt="Twitter Icon" class="social-icon">
-                        <h3>Twitter</h3>
-                        <p>Follow us for latest updates, announcements and trending posts.</p>
-                        <a href="https://www.x.com" target="_blank">Follow Now</a>
-                    </div>
-
+            <div class="social-box-container flex flex-wrap gap-8 justify-center">
+                <!-- Facebook -->
+                <div class="social-box facebook h-[350px] flex flex-col justify-between items-center p-6">
+                    <img src="assets/images/facebook.jpeg" alt="Facebook Icon" class="social-icon">
+                    <h3>Facebook</h3>
+                    <p>Join our Facebook community for daily updates and discussions.</p>
+                    <a href="https://www.facebook.com" target="_blank">Visit Page</a>
                 </div>
+                <!-- Instagram -->
+                <div class="social-box instagram mx-auto">
+                    <img src="assets/images/instagram.jpeg" alt="Instagram Icon" class="social-icon">
+                    <h3>Instagram</h3>
+                    <p>Follow us for reels, stories and behind-the-scenes content.</p>
+                    <a href="https://www.instagram.com" target="_blank">Follow Now</a>
+                </div>
+                <!-- YouTube -->
+                <div class="social-box youtube h-[350px] flex flex-col justify-between items-center">
+                    <img src="assets/images/youtube.jpeg" alt="YouTube Icon" class="social-icon">
+                    <h3>YouTube</h3>
+                    <p>Subscribe to watch tutorials, events and exclusive videos.</p>
+                    <a href="https://www.youtube.com" target="_blank">Subscribe</a>
+                </div>
+                <!-- Snapchat -->
+                <div class="social-box snapchat mx-auto">
+                    <img src="assets/images/snapchat.jpeg" alt="Snapchat Icon" class="social-icon">
+                    <h3>Snapchat</h3>
+                    <p>Follow us for daily snaps, updates and behind-the-scenes moments.</p>
+                    <a href="https://www.snapchat.com" target="_blank">Follow Now</a>
+                </div>
+                <!-- Twitter -->
+                <div class="social-box twitter h-[350px] flex flex-col justify-between items-center">
+                    <img src="assets/images/twitter.jpeg" alt="Twitter Icon" class="social-icon">
+                    <h3>Twitter</h3>
+                    <p>Follow us for latest updates, announcements and trending posts.</p>
+                    <a href="https://www.x.com" target="_blank">Follow Now</a>
+                </div>
+
+            </div>
             </div>
 
         </section>
