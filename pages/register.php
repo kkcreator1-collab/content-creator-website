@@ -1,15 +1,15 @@
 <?php
-// register.php snippet
+// PHP logic must be at the top to handle redirects and database actions
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve the native Render connection string
-    $databaseUrl = "postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website";
+    // Retrieve the native Render connection string from environment variables
+    $databaseUrl = 'postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website';
 
     try {
-        // PDO works natively with PostgreSQL by changing 'mysql:' to 'pgsql:'
+        // Create a native PostgreSQL connection using PDO
         $pdo = new PDO($databaseUrl);
         $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // SQL is almost identical, but use SERIAL instead of AUTO_INCREMENT for the table
+        // Create the table automatically if it doesn't exist
         $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
             id SERIAL PRIMARY KEY,
             fullname VARCHAR(255) NOT NULL,
@@ -22,8 +22,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )");
 
-        // ... rest of your insertion logic remains the same ...
+        // Collect and sanitize data from the form
+        $fullname  = htmlspecialchars($_POST['fullname']);
+        $email     = htmlspecialchars($_POST['email']);
+        $portfolio = htmlspecialchars($_POST['portfolio']);
+        $category  = $_POST['category'];
+        $mobile    = htmlspecialchars($_POST['mobile']);
+        $address   = htmlspecialchars($_POST['address']);
+        $imageName = $_FILES['user_image']['name'];
+
+        // Prepare and execute the SQL insertion
+        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
+
+        // Success Alert showing saved data
+        $alertMsg = "Registration Successful!\\n\\n";
+        $alertMsg .= "Name: $fullname\\n";
+        $alertMsg .= "Email: $email\\n";
+        $alertMsg .= "Category: $category\\n";
+        $alertMsg .= "Mobile: $mobile\\n";
+        $alertMsg .= "Address: $address";
+
+        echo "<script>
+            alert('$alertMsg');
+            window.location.href='../index.php';
+        </script>";
+        exit;
+
     } catch (PDOException $e) {
+        // Display error message if connection or insertion fails
         echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
     }
 }
