@@ -1,26 +1,21 @@
 FROM php:8.2-apache
 
-# Install system dependencies
+# Install necessary system libraries for MySQL
 RUN apt-get update && apt-get install -y \
-    libssl-dev \
+    libmariadb-dev \
     unzip \
-    libmariadb-dev
+    && rm -rf /var/lib/apt/lists/*
 
-# Install MySQL extensions instead of MongoDB
+# Install the MySQL extensions
 RUN docker-php-ext-install pdo pdo_mysql mysqli
 
-# Install Composer correctly (Download the binary)
+# Install Composer binary directly (avoids APT dependency issues)
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# Set working directory
 WORKDIR /var/www/html
-
-# Copy your project files
 COPY . .
 
-# Install PHP dependencies
-# Removed the MongoDB platform requirement ignore flag as it's no longer needed
+# Install dependencies (will now ignore old MongoDB libraries)
 RUN composer install --no-interaction --optimize-autoloader
 
-# Expose port 80
 EXPOSE 80
