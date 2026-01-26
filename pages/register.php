@@ -1,43 +1,46 @@
 <?php
-require '../vendor/autoload.php';
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Database credentials from environment variables for Render
+    $host     = getenv('DB_HOST');
+    $dbname   = getenv('DB_NAME');
+    $username = getenv('DB_USER');
+    $password = getenv('DB_PASSWORD');
+
     try {
-        $uri = getenv('MONGODB_URI');
-        $client = new MongoDB\Client($uri);
-        $collection = $client->kk_creator->registrations;
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Capture data into an array for the alert
-        $formData = [
-            'fullname'  => htmlspecialchars($_POST['fullname']),
-            'email'     => htmlspecialchars($_POST['email']),
-            'portfolio' => htmlspecialchars($_POST['portfolio']),
-            'category'  => $_POST['category'],
-            'mobile'    => htmlspecialchars($_POST['mobile']),
-            'address'   => htmlspecialchars($_POST['address']),
-            'image'     => $_FILES['user_image']['name'],
-            'timestamp' => date('Y-m-d H:i:s')
-        ];
+        // Prepare data for alert and database
+        $fullname  = htmlspecialchars($_POST['fullname']);
+        $email     = htmlspecialchars($_POST['email']);
+        $portfolio = htmlspecialchars($_POST['portfolio']);
+        $category  = $_POST['category'];
+        $mobile    = htmlspecialchars($_POST['mobile']);
+        $address   = htmlspecialchars($_POST['address']);
+        $imageName = $_FILES['user_image']['name'];
 
-        $result = $collection->insertOne($formData);
+        // SQL Insertion
+        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
 
-        if ($result->getInsertedCount()) {
-            // Prepare a string for the JavaScript alert
-            $alertMsg = "Registration Successful!\\n\\n";
-            $alertMsg .= "Name: " . $formData['fullname'] . "\\n";
-            $alertMsg .= "Email: " . $formData['email'] . "\\n";
-            $alertMsg .= "Category: " . $formData['category'] . "\\n";
-            $alertMsg .= "Mobile: " . $formData['mobile'] . "\\n";
-            $alertMsg .= "Address: " . $formData['address'] . "\\n";
-            $alertMsg .= "File: " . $formData['image'];
+        // Success Alert with all data
+        $alertMsg = "Registration Successful!\\n\\n";
+        $alertMsg .= "Name: $fullname\\n";
+        $alertMsg .= "Email: $email\\n";
+        $alertMsg .= "Category: $category\\n";
+        $alertMsg .= "Mobile: $mobile\\n";
+        $alertMsg .= "Address: $address\\n";
+        $alertMsg .= "Image: $imageName";
 
-            echo "<script>
-                alert('$alertMsg');
-                window.location.href='../index.php';
-            </script>";
-        }
-    } catch (Exception $e) {
-        die("Database Error: " . $e->getMessage());
+        echo "<script>
+            alert('$alertMsg');
+            window.location.href='../index.php';
+        </script>";
+
+    } catch (PDOException $e) {
+        echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
     }
 }
 ?>
@@ -79,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <p class="text-gray-400">Fill out the details below to register for the 3C Pure Gold Trophy event.</p>
         </div>
 
-        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10" action="register.php"
+        <form class="glass-card p-8 rounded-3xl space-y-6 shadow-xl border border-white/10" action="../pages/register.php"
             method="POST" enctype="multipart/form-data">
             <div>
                 <label class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
