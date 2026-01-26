@@ -18,7 +18,7 @@
                 <div class="w-10 h-10 bg-white rounded-md flex items-center justify-center text-black font-bold"><img
                         src="../assets/images/icon.jpeg" alt="KK Creator Logo" class="reveal w-12 h-auto opacity-80">
                 </div>
-                <span class="font-bold text-xl">KK CREATOR</span>
+                <span class="font-black text-2xl text-black">KK CREATOR</span>
             </div>
         </div>
         <div class="hidden md:flex gap-8 text-sm font-medium">
