@@ -119,25 +119,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             action="../pages/register.php" method="POST" enctype="multipart/form-data">
             <div>
                 <label class="block text-sm font-medium mb-2">Full Name <span class="text-red-500">*</span></label>
-                <input type="text" placeholder="Enter name" required
+                <input type="text" name="fullname" placeholder="Enter name" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
             </div>
             <div>
                 <label class="block text-sm font-medium mb-2">Email Address <span class="text-red-500">*</span></label>
-                <input type="email" placeholder="email@example.com" required
+                <input type="email" name="email" placeholder="email@example.com" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
             </div>
 
             <div>
                 <label class="block text-sm font-medium mb-2">Channel/Portfolio Link <span
                         class="text-red-500">*</span></label>
-                <input type="url" placeholder="https://..." required
+                <input type="url" name="portfolio" placeholder="https://..." required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
             </div>
 
             <div>
                 <label class="block text-sm font-medium mb-2">Category <span class="text-red-500">*</span></label>
-                <select required
+                <select name="category" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors appearance-none">
                     <option class="bg-slate-900">Nano</option>
                     <option class="bg-slate-900">Micro</option>
@@ -148,17 +148,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             <div>
                 <label class="block text-sm font-medium mb-2">Mobile Number <span class="text-red-500">*</span></label>
-                <input type="tel" placeholder="Enter your mobile number" required
+                <input type="tel" name="mobile" placeholder="Enter your mobile number" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors">
             </div>
             <div>
                 <label class="block text-sm font-medium mb-2">Full Address <span class="text-red-500">*</span></label>
-                <textarea placeholder="Enter your address" required
+                <textarea name="address" placeholder="Enter your address" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-3 focus:outline-none focus:border-pink-500 transition-colors h-24"></textarea>
             </div>
             <div>
                 <label class="block text-sm font-medium mb-2">Upload Image <span class="text-red-500">*</span></label>
-                <input type="file" required
+                <input type="file" name="user_image" required
                     class="w-full bg-white/5 border border-white/20 rounded-xl px-4 py-2 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-pink-500 file:text-white hover:file:bg-pink-600">
             </div>
 
