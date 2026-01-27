@@ -1,22 +1,30 @@
 <?php
-// Retrieve the native Render connection string from environment variables
-$databaseUrl = 'postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website';
+// Database credentials for Render PostgreSQL
+$host = 'dpg-d5ru0c1r0fns739ja0dg-a';
+$db   = 'content_creator_website';
+$user = 'content_creator_website_user';
+$pass = 'kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq';
 
-// --- DB CONNECTION VERIFICATION ---
+// Native PDO DSN for PostgreSQL
+$dsn = "pgsql:host=$host;port=5432;dbname=$db;user=$user;password=$pass";
+
+// --- CONNECTION TEST CODE ---
 try {
-	$pdo_test = new PDO($databaseUrl);
+	$pdo_test = new PDO($dsn);
 	$pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	$pdo_test = null; 
 } catch (PDOException $e) {
-	echo "<script>alert('❌ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
+	// Show an alert but do NOT use die() or exit()
+	echo "<script>alert('⚠️ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
 }
 
+// --- FORM PROCESSING & TABLE CREATION ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	try {
-		$pdo = new PDO($databaseUrl);
+		$pdo = new PDO($dsn);
 		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		// Create the table for PostgreSQL if it doesn't exist
+		// Database creation if not exists
 		$pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
 			id SERIAL PRIMARY KEY,
 			fullname VARCHAR(255) NOT NULL,
@@ -29,27 +37,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)");
 
+		// Sanitize inputs
 		$fullname  = htmlspecialchars($_POST['fullname']);
 		$email     = htmlspecialchars($_POST['email']);
 		$portfolio = htmlspecialchars($_POST['portfolio']);
 		$category  = $_POST['category'];
 		$mobile    = htmlspecialchars($_POST['mobile']);
 		$address   = htmlspecialchars($_POST['address']);
-		$imageName = $_FILES['user_image']['name'];
+		$imageName = $_FILES['user_image']['name'] ?? '';
 
 		$sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
 				VALUES (?, ?, ?, ?, ?, ?, ?)";
 		$stmt = $pdo->prepare($sql);
 		$stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
 
-		echo "<script>
-			alert('Registration Successful!\\n\\nName: $fullname');
-			window.location.href='../index.php';
-		</script>";
+		echo "<script>alert('Registration Successful!'); window.location.href='../index.php';</script>";
 		exit;
-
 	} catch (PDOException $e) {
-		echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
+		echo "<script>alert('❌ Database Error: " . addslashes($e->getMessage()) . "');</script>";
 	}
 }
 ?>
