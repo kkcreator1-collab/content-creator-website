@@ -1,6 +1,6 @@
 {
-	"name": "kkcreator/project",
-	"require": {
-		"php": ">=8.1"
-	}
+    "name": "kkcreator/project",
+    "require": {
+        "php": ">=8.1"
+    }
 }
