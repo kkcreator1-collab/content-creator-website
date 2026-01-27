@@ -1,31 +1,30 @@
 <?php
-// Database credentials for Render PostgreSQL
+// Database credentials
 $host = 'dpg-d5ru0c1r0fns739ja0dg-a';
-$db   = 'content_creator_website';
+$db = 'content_creator_website';
 $user = 'content_creator_website_user';
 $pass = 'kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq';
 
 // Native PDO DSN for PostgreSQL
 $dsn = "pgsql:host=$host;port=5432;dbname=$db;user=$user;password=$pass";
 
-// --- CONNECTION TEST CODE ---
+// --- CONNECTION TEST ---
 try {
-	$pdo_test = new PDO($dsn);
-	$pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	$pdo_test = null; 
+    $pdo_test = new PDO($dsn);
+    $pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo_test = null;
 } catch (PDOException $e) {
-	// Show an alert but do NOT use die() or exit()
-	echo "<script>alert('⚠️ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
+    echo "<script>alert('⚠️ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
 }
 
-// --- FORM PROCESSING & TABLE CREATION ---
+// --- FORM PROCESSING ---
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	try {
-		$pdo = new PDO($dsn);
-		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    try {
+        $pdo = new PDO($dsn);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-		// Database creation if not exists
-		$pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+        // Table creation
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
 			id SERIAL PRIMARY KEY,
 			fullname VARCHAR(255) NOT NULL,
 			email VARCHAR(255) NOT NULL,
@@ -37,25 +36,45 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 		)");
 
-		// Sanitize inputs
-		$fullname  = htmlspecialchars($_POST['fullname']);
-		$email     = htmlspecialchars($_POST['email']);
-		$portfolio = htmlspecialchars($_POST['portfolio']);
-		$category  = $_POST['category'];
-		$mobile    = htmlspecialchars($_POST['mobile']);
-		$address   = htmlspecialchars($_POST['address']);
-		$imageName = $_FILES['user_image']['name'] ?? '';
+        // 1. IMAGE UPLOAD LOGIC
+        $imageName = "";
+        if (isset($_FILES['user_image']) && $_FILES['user_image']['error'] === 0) {
+            $uploadDir = '../assets/uploads/';
 
-		$sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
+            // Create directory if it doesn't exist
+            if (!is_dir($uploadDir)) {
+                mkdir($uploadDir, 0777, true);
+            }
+
+            // Generate a unique name to prevent overwriting
+            $fileExtension = pathinfo($_FILES['user_image']['name'], PATHINFO_EXTENSION);
+            $imageName = time() . '_' . uniqid() . '.' . $fileExtension;
+            $targetPath = $uploadDir . $imageName;
+
+            if (!move_uploaded_file($_FILES['user_image']['tmp_name'], $targetPath)) {
+                throw new Exception("Failed to upload image.");
+            }
+        }
+
+        // 2. DATA INSERTION
+        $fullname = htmlspecialchars($_POST['fullname']);
+        $email = htmlspecialchars($_POST['email']);
+        $portfolio = htmlspecialchars($_POST['portfolio']);
+        $category = $_POST['category'];
+        $mobile = htmlspecialchars($_POST['mobile']);
+        $address = htmlspecialchars($_POST['address']);
+
+        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
 				VALUES (?, ?, ?, ?, ?, ?, ?)";
-		$stmt = $pdo->prepare($sql);
-		$stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
 
-		echo "<script>alert('Registration Successful!'); window.location.href='../index.php';</script>";
-		exit;
-	} catch (PDOException $e) {
-		echo "<script>alert('❌ Database Error: " . addslashes($e->getMessage()) . "');</script>";
-	}
+        echo "<script>alert('Registration Successful!'); window.location.href='../index.php';</script>";
+        exit;
+
+    } catch (Exception $e) {
+        echo "<script>alert('❌ Error: " . addslashes($e->getMessage()) . "');</script>";
+    }
 }
 ?>
 <!DOCTYPE html>
