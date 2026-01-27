@@ -9,20 +9,3 @@ document.addEventListener("DOMContentLoaded", () => {
         }, index * 150); // Each item appears 150ms after the previous one
     });
 });
-function openAdminWithPrompt() {
-    const secretKey = prompt("Please enter the Admin Secret Key:");
-
-    if (secretKey !== null && secretKey !== "") {
-        // Encode the key to handle special characters in the URL
-        const adminUrl = `../pages/admin_view.php?access=${encodeURIComponent(secretKey)}`;
-        window.open(adminUrl, '_blank');
-    }
-}
-
-// Call the function on page load
-window.onload = function () {
-    // Only trigger if not already on the admin page
-    if (!window.location.href.includes('admin_view.php')) {
-        openAdminWithPrompt();
-    }
-};
