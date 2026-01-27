@@ -9,7 +9,6 @@ try {
 	$pdo_test = null; 
 } catch (PDOException $e) {
 	echo "<script>alert('❌ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
-	exit;
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
