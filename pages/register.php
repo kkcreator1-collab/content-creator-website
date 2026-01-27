@@ -4,121 +4,54 @@ $databaseUrl = 'postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4g
 
 // --- DB CONNECTION VERIFICATION ---
 try {
-    $pdo_test = new PDO($databaseUrl);
-    $pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // Connection successful, we can destroy this test instance
-    $pdo_test = null; 
+	$pdo_test = new PDO($databaseUrl);
+	$pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$pdo_test = null; 
 } catch (PDOException $e) {
-    // If connection fails, show alert and stop execution
-    echo "<script>
-        alert('❌ Database Connection Failed: " . addslashes($e->getMessage()) . "');
-    </script>";
-    exit; // Stop the page from loading further
+	echo "<script>alert('❌ Database Connection Failed: " . addslashes($e->getMessage()) . "');</script>";
+	exit;
 }
-// --- END VERIFICATION ---
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    try {
-        $pdo = new PDO($databaseUrl);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	try {
+		$pdo = new PDO($databaseUrl);
+		$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Create the table automatically if it doesn't exist
-        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id SERIAL PRIMARY KEY,
-            fullname VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL,
-            portfolio VARCHAR(255),
-            category VARCHAR(50),
-            mobile VARCHAR(20),
-            address TEXT,
-            image VARCHAR(255),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )");
+		// Create the table for PostgreSQL if it doesn't exist
+		$pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+			id SERIAL PRIMARY KEY,
+			fullname VARCHAR(255) NOT NULL,
+			email VARCHAR(255) NOT NULL,
+			portfolio VARCHAR(255),
+			category VARCHAR(50),
+			mobile VARCHAR(20),
+			address TEXT,
+			image VARCHAR(255),
+			created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+		)");
 
-        // Collect and sanitize data from the form
-        $fullname  = htmlspecialchars($_POST['fullname']);
-        $email     = htmlspecialchars($_POST['email']);
-        $portfolio = htmlspecialchars($_POST['portfolio']);
-        $category  = $_POST['category'];
-        $mobile    = htmlspecialchars($_POST['mobile']);
-        $address   = htmlspecialchars($_POST['address']);
-        $imageName = $_FILES['user_image']['name'];
+		$fullname  = htmlspecialchars($_POST['fullname']);
+		$email     = htmlspecialchars($_POST['email']);
+		$portfolio = htmlspecialchars($_POST['portfolio']);
+		$category  = $_POST['category'];
+		$mobile    = htmlspecialchars($_POST['mobile']);
+		$address   = htmlspecialchars($_POST['address']);
+		$imageName = $_FILES['user_image']['name'];
 
-        // Prepare and execute the SQL insertion
-        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
+		$sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
+				VALUES (?, ?, ?, ?, ?, ?, ?)";
+		$stmt = $pdo->prepare($sql);
+		$stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
 
-        // Success Alert
-        echo "<script>
-            alert('Registration Successful!\\n\\nName: $fullname');
-            window.location.href='../index.php';
-        </script>";
-        exit;
+		echo "<script>
+			alert('Registration Successful!\\n\\nName: $fullname');
+			window.location.href='../index.php';
+		</script>";
+		exit;
 
-    } catch (PDOException $e) {
-        echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
-    }
-}
-?>
-<?php
-// PHP logic must be at the top to handle redirects and database actions
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Retrieve the native Render connection string from environment variables
-    $databaseUrl = 'postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website';
-
-    try {
-        // Create a native PostgreSQL connection using PDO
-        $pdo = new PDO($databaseUrl);
-        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-        // Create the table automatically if it doesn't exist
-        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
-            id SERIAL PRIMARY KEY,
-            fullname VARCHAR(255) NOT NULL,
-            email VARCHAR(255) NOT NULL,
-            portfolio VARCHAR(255),
-            category VARCHAR(50),
-            mobile VARCHAR(20),
-            address TEXT,
-            image VARCHAR(255),
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )");
-
-        // Collect and sanitize data from the form
-        $fullname  = htmlspecialchars($_POST['fullname']);
-        $email     = htmlspecialchars($_POST['email']);
-        $portfolio = htmlspecialchars($_POST['portfolio']);
-        $category  = $_POST['category'];
-        $mobile    = htmlspecialchars($_POST['mobile']);
-        $address   = htmlspecialchars($_POST['address']);
-        $imageName = $_FILES['user_image']['name'];
-
-        // Prepare and execute the SQL insertion
-        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
-                VALUES (?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
-
-        // Success Alert showing saved data
-        $alertMsg = "Registration Successful!\\n\\n";
-        $alertMsg .= "Name: $fullname\\n";
-        $alertMsg .= "Email: $email\\n";
-        $alertMsg .= "Category: $category\\n";
-        $alertMsg .= "Mobile: $mobile\\n";
-        $alertMsg .= "Address: $address";
-
-        echo "<script>
-            alert('$alertMsg');
-            window.location.href='../index.php';
-        </script>";
-        exit;
-
-    } catch (PDOException $e) {
-        // Display error message if connection or insertion fails
-        echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
-    }
+	} catch (PDOException $e) {
+		echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
+	}
 }
 ?>
 <!DOCTYPE html>
