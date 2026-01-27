@@ -1,4 +1,68 @@
 <?php
+// Retrieve the native Render connection string from environment variables
+$databaseUrl = 'postgresql://content_creator_website_user:kKEQMQkX3DxkcMbHIW5V4gbDJuDNoXCq@dpg-d5ru0c1r0fns739ja0dg-a/content_creator_website';
+
+// --- DB CONNECTION VERIFICATION ---
+try {
+    $pdo_test = new PDO($databaseUrl);
+    $pdo_test->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    // Connection successful, we can destroy this test instance
+    $pdo_test = null; 
+} catch (PDOException $e) {
+    // If connection fails, show alert and stop execution
+    echo "<script>
+        alert('❌ Database Connection Failed: " . addslashes($e->getMessage()) . "');
+    </script>";
+    exit; // Stop the page from loading further
+}
+// --- END VERIFICATION ---
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    try {
+        $pdo = new PDO($databaseUrl);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        // Create the table automatically if it doesn't exist
+        $pdo->exec("CREATE TABLE IF NOT EXISTS registrations (
+            id SERIAL PRIMARY KEY,
+            fullname VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL,
+            portfolio VARCHAR(255),
+            category VARCHAR(50),
+            mobile VARCHAR(20),
+            address TEXT,
+            image VARCHAR(255),
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )");
+
+        // Collect and sanitize data from the form
+        $fullname  = htmlspecialchars($_POST['fullname']);
+        $email     = htmlspecialchars($_POST['email']);
+        $portfolio = htmlspecialchars($_POST['portfolio']);
+        $category  = $_POST['category'];
+        $mobile    = htmlspecialchars($_POST['mobile']);
+        $address   = htmlspecialchars($_POST['address']);
+        $imageName = $_FILES['user_image']['name'];
+
+        // Prepare and execute the SQL insertion
+        $sql = "INSERT INTO registrations (fullname, email, portfolio, category, mobile, address, image) 
+                VALUES (?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([$fullname, $email, $portfolio, $category, $mobile, $address, $imageName]);
+
+        // Success Alert
+        echo "<script>
+            alert('Registration Successful!\\n\\nName: $fullname');
+            window.location.href='../index.php';
+        </script>";
+        exit;
+
+    } catch (PDOException $e) {
+        echo "<script>alert('Database Error: " . addslashes($e->getMessage()) . "');</script>";
+    }
+}
+?>
+<?php
 // PHP logic must be at the top to handle redirects and database actions
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve the native Render connection string from environment variables
