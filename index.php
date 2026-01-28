@@ -28,6 +28,7 @@
                 <a href="pages/about.php" class="hover:text-pink-500">About us</a>
                 <a href="pages/work.php" class="hover:text-pink-500">Work</a>
                 <a href="pages/info.php" class="hover:text-pink-500">Info</a>
+                <a href="pages/participants.php" class="hover:text-pink-500">Participants</a>
             </div>
             <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-sm">Get
                 Started</button>
@@ -48,13 +49,13 @@
         </div>
 
         <div class="reveal flex justify-center mb-8 opacity-0">
-            <img src="assets/images/trophy.jpeg" alt="Trophy" class="w-48 h-auto object-contain">
+            <img src="assets/images/trophy.jpeg" alt="Trophy" class="w-48 h-auto object-contain trophy-image reveal">
         </div>
 
         <div class="mt-8 flex justify-center">
             <div class="bg-black/40 p-4 rounded-xl inline-flex items-center gap-3 border border-yellow-500/30">
                 <span class="text-2xl">🏆</span>
-                <span class="text-yellow-400 font-semibold uppercase tracking-widest">3C Pure 500 Gram Gold
+                <span class="text-yellow-400 font-semibold uppercase tracking-widest">Pure 500 Gram Gold
                     Trophy</span>
                 <span class="text-2xl">🏆</span>
             </div>
@@ -65,6 +66,13 @@
         <a href="pages/register.php"
             class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-12 py-4 rounded-full text-2xl font-bold hover:scale-105 transition-transform shadow-lg blink">
             Register Here 🚀
+        </a>
+    </div>
+
+    <div class="flex justify-center mb-12">
+        <a href="pages/register.php"
+            class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-12 py-4 rounded-full text-2xl font-bold hover:scale-105 transition-transform shadow-lg blink">
+            3C Participants
         </a>
     </div>
 
