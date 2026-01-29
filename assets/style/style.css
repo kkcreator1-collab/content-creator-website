@@ -23,6 +23,10 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
+img[alt="KK Creator Logo"] {
+  display: none !important;
+}
+
 /* --- CLASSES MOVED OUTSIDE OF BODY BLOCK --- */
 
 .tricolor-btn {
@@ -291,4 +295,62 @@ nav {
 
 .glass-btn:hover::before {
   left: 100%;
+}
+
+/* --- RESPONSIVENESS OPTIMIZATIONS --- */
+
+/* 1. Mobile-First Navigation & Layout Adjustments */
+@media (max-width: 768px) {
+  body {
+    padding-top: 70px;
+    /* Adjusted for smaller mobile navbar */
+  }
+
+  nav {
+    padding: 1rem !important;
+  }
+
+  /* Hide desktop links if they overflow and ensure the button stays centered */
+  .hidden.md\:flex {
+    display: none;
+  }
+
+  /* Scale down large headings for mobile */
+  h1 {
+    font-size: 2.5rem !important;
+    line-height: 1.2;
+  }
+
+  /* Ensure grid containers have adequate padding on mobile */
+  section {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+}
+
+/* 2. Optimized Touch Targets */
+@media (pointer: coarse) {
+
+  button,
+  a {
+    min-height: 44px;
+    /* Standard for mobile touch targets */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* 3. Fluid Images and Cards */
+.reveal,
+.glass-card,
+img {
+  max-width: 100%;
+  height: auto;
+  box-sizing: border-box;
+}
+
+/* 4. Smooth Scrolling for Navigation Links */
+html {
+  scroll-behavior: smooth;
 }
