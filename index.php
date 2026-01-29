@@ -36,8 +36,10 @@
 
     <header class="text-center pt-14 pb-10 px-4">
         <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
-            <img src="assets/images/icon.jpeg" alt="KK Creator Logo"
-                class="reveal w-24 h-auto rounded-lg shadow-lg opacity-0">
+            
+        <!-- Logo Image -->
+        <img src="assets/images/icon.jpeg" alt="KK Creator Logo"
+                class="reveal w-24 h-auto rounded-lg shadow-lg opacity-0"> 
 
             <div class="flex flex-col items-center">
                 <div
@@ -106,10 +108,6 @@
 
     </section>
 
-    <footer class="text-center mt-20 py-10 bg-black/20">
-        <h2 class="text-3xl font-bold mb-2">Grow your career with Socio Commerce</h2>
-        <p class="text-gray-400 max-w-2xl mx-auto px-6">Learn how to enhance your online presence, create smarter
-            content, and grow faster using AI-powered tools.</p>
         <br>
         <section class="social-section">
             <h2>Follow Us on Social Media</h2>
@@ -159,6 +157,10 @@
 
         </section>
 
+         <footer class="text-center mt-20 py-10 bg-black/20">
+        <h2 class="text-3xl font-bold mb-2">Grow your career with Socio Commerce</h2>
+        <p class="text-gray-400 max-w-2xl mx-auto px-6">Learn how to enhance your online presence, create smarter
+            content, and grow faster using AI-powered tools.</p>
         <br>
         <p class="text-gray-400">© 2026 KK CREATOR. All rights reserved.</p>
     </footer>
