@@ -72,7 +72,7 @@
     </div>
 
     <div class="flex justify-center mb-12">
-        <a href="pages/register.php"
+        <a href="pages/participants.php"
             class="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 px-12 py-4 rounded-full text-2xl font-bold hover:scale-105 transition-transform shadow-lg blink">
             3C Participants
         </a>
@@ -84,7 +84,7 @@
             Competition System
         </button>
 
-        <button class="tricolor-btn" onclick="location.href='pages/participants.php';">
+        <button class="tricolor-btn" onclick="location.href='pages/prize.php';">
             Prize List
         </button>
 
