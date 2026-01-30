@@ -84,7 +84,7 @@
             Competition System
         </button>
 
-        <button class="tricolor-btn" onclick="location.href='pages/prize.php';">
+        <button class="tricolor-btn" onclick="location.href='pages/participants.php';">
             Prize List
         </button>
 
