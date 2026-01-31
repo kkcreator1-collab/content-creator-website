@@ -187,3 +187,9 @@ nav a:hover {
     justify-content: center;
   }
 }
+
+.social-section{
+  text-align: center;
+  text-decoration: solid;
+  font-weight: bold;
+}
