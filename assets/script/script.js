@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealElements.forEach(el => {
         // Set initial state via JS to prevent flickering
-        el.style.opacity = "0";
+        el.style.opacity = "1";
         el.style.transform = "translateY(30px)";
         revealObserver.observe(el);
     });
@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, revealOptions);
 
     revealElements.forEach(el => {
-        el.style.opacity = "0";
+        el.style.opacity = "1";
         el.style.transform = "translateY(20px)";
         revealObserver.observe(el);
     });
