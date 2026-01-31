@@ -280,13 +280,6 @@ img {
   box-shadow: none !important;
   /* Removes the rectangular shadow */
 
-  background-color: #ff00ff;
-  /* A bright color behind the image */
-  background-blend-mode: overlay;
-  /* This mixes the trophy with the color */
-  background-size: contain;
-  background-repeat: no-repeat;
-
   /* This creates the 'structure-only' look by adding a glow around the outline */
   filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.7));
 
