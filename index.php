@@ -50,7 +50,7 @@
         </div>
 
         <div class="reveal flex justify-center mb-8 opacity-0">
-            <img src="assets/images/trophy.jpeg" alt="Trophy" class="w-48 h-auto object-contain trophy-image reveal">
+            <img src="assets/images/trophy.png" alt="Trophy" class="w-48 h-auto object-contain trophy-image reveal">
         </div>
 
         <div class="mt-8 flex justify-center">
