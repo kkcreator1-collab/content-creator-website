@@ -250,16 +250,19 @@ img {
 }
 
 .social-box h3 {
-  color: #000000 !important; /* Forces the platform name to black */
+  color: #000000 !important;
+  /* Forces the platform name to black */
   margin-bottom: 10px;
   font-size: 1.25rem;
 }
 
 .social-box p {
-  color: #000000 !important; /* Forces the description text to black */
+  color: #000000 !important;
+  /* Forces the description text to black */
   font-size: 0.9rem;
   margin-bottom: 20px;
-  opacity: 1; /* Ensures no transparency is washing out the black */
+  opacity: 1;
+  /* Ensures no transparency is washing out the black */
 }
 
 /* Special case for Snapchat where the button is yellow */
@@ -268,5 +271,16 @@ img {
 }
 
 .trophy-image {
-    mix-blend-mode: screen;
+  background: transparent !important;
+  border: none !important;
+  /* This shadow creates the 'outline' effect around the trophy shape */
+  filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.8));
+  object-fit: contain;
+  /* If the trophy background is BLACK, this makes only the light parts visible */
+  mix-blend-mode: screen;
+
+  /* If the trophy background is WHITE, use this instead: */
+  /* mix-blend-mode: multiply; */
+
+  background: transparent;
 }
