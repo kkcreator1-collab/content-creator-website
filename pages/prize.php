@@ -52,14 +52,12 @@
 				<img src="../assets/images/prize3.jpeg" alt="Prize 3" class="w-full h-auto rounded-xl">
 			</div>
 
-			<div class="reveal bg-black/40 p-2 rounded-2xl border border-pink-500/30 opacity-0">
-				<img src="../assets/images/prize1000.jpeg" alt="Prize 1000"
-					class="w-full h-auto rounded-xl shadow-lg shadow-pink-500/20">
+			<div class="reveal bg-black/40 p-2 rounded-2xl border border-purple-500/20 opacity-0">
+				<img src="../assets/images/prize21.jpeg" alt="Prize 21" class="w-full h-auto rounded-xl">
 			</div>
 
-			<div class="reveal bg-black/40 p-2 rounded-2xl border border-purple-500/30 opacity-0">
-				<img src="../assets/images/prize200.jpeg" alt="Prize 200"
-					class="w-full h-auto rounded-xl shadow-lg shadow-purple-500/20">
+			<div class="reveal bg-black/40 p-2 rounded-2xl border border-pink-500/20 opacity-0">
+				<img src="../assets/images/prize50.jpeg" alt="Prize 50" class="w-full h-auto rounded-xl">
 			</div>
 
 			<div class="reveal bg-black/40 p-2 rounded-2xl border border-indigo-500/30 opacity-0">
@@ -67,12 +65,14 @@
 					class="w-full h-auto rounded-xl shadow-lg shadow-indigo-500/20">
 			</div>
 
-			<div class="reveal bg-black/40 p-2 rounded-2xl border border-pink-500/20 opacity-0">
-				<img src="../assets/images/prize50.jpeg" alt="Prize 50" class="w-full h-auto rounded-xl">
+			<div class="reveal bg-black/40 p-2 rounded-2xl border border-purple-500/30 opacity-0">
+				<img src="../assets/images/prize200.jpeg" alt="Prize 200"
+					class="w-full h-auto rounded-xl shadow-lg shadow-purple-500/20">
 			</div>
 
-			<div class="reveal bg-black/40 p-2 rounded-2xl border border-purple-500/20 opacity-0">
-				<img src="../assets/images/prize21.jpeg" alt="Prize 21" class="w-full h-auto rounded-xl">
+			<div class="reveal bg-black/40 p-2 rounded-2xl border border-pink-500/30 opacity-0">
+				<img src="../assets/images/prize1000.jpeg" alt="Prize 1000"
+					class="w-full h-auto rounded-xl shadow-lg shadow-pink-500/20">
 			</div>
 
 			<div class="reveal bg-black/40 p-2 rounded-2xl border border-yellow-500/20 opacity-0">
