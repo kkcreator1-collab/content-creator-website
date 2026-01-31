@@ -137,6 +137,8 @@ nav a:hover {
   align-items: center;
   margin-top: auto;
   width: 80%;
+  color: #ffffff !important;
+  font-weight: 600;
 }
 
 /* Platform Colors */
@@ -245,4 +247,22 @@ img {
   text-align: center;
   text-decoration: solid;
   font-weight: bold;
+}
+
+.social-box h3 {
+  color: #000000 !important; /* Forces the platform name to black */
+  margin-bottom: 10px;
+  font-size: 1.25rem;
+}
+
+.social-box p {
+  color: #000000 !important; /* Forces the description text to black */
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  opacity: 1; /* Ensures no transparency is washing out the black */
+}
+
+/* Special case for Snapchat where the button is yellow */
+.social-box.snapchat a {
+  color: #000000 !important;
 }
