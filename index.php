@@ -108,6 +108,8 @@
     </section>
 
     <br>
+    <br>
+
     <section class="social-section">
         <p class="social-desc text-2xl font-semibold whitespace-nowrap">
             Follow Us on Social Media
@@ -115,6 +117,8 @@
         <p class="social-desc text-2xl font-semibold whitespace-nowrap">
             Stay connected with us for latest updates, competitions, tips and announcements.
         </p>
+
+        <br>
 
         <div class="social-box-container flex flex-wrap gap-8 justify-center">
             <!-- Facebook -->
