@@ -320,3 +320,10 @@ img {
     padding-top: 160px;
   }
 }
+
+html,
+body {
+  overflow-x: hidden;
+  /* Prevents side-scrolling on the main page */
+  width: 100%;
+}
