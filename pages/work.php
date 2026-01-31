@@ -26,7 +26,6 @@
             <a href="../pages/about.php" class="hover:text-pink-500">About us</a>
             <a href="../pages/work.php" class="hover:text-pink-500">Work</a>
             <a href="../pages/info.php" class="hover:text-pink-500">Info</a>
-            <a href="../pages/participants.php" class="hover:text-pink-500">Participants</a>
         </div>
         <button class="bg-gradient-to-r from-pink-500 to-purple-600 px-6 py-2 rounded-full text-sm">Get Started</button>
     </nav>
