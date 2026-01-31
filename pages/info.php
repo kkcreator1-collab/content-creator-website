@@ -66,7 +66,7 @@
 
     <footer class="text-center mt-12 py-10 bg-black/20">
         <h2 class="text-3xl font-bold mb-2">Powered by Socio Commerce</h2>
-        <p class="text-gray-400">© 2026 KK CREATOR. All rights reserved.</p>
+        <p class="text-gray-400">© <span id="current-year"></span> KK CREATOR. All rights reserved.</p>
     </footer>
 </body>
 

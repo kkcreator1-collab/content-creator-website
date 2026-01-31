@@ -172,7 +172,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </section>
 
     <footer class="text-center mt-20 py-10 bg-black/20">
-        <p class="text-gray-400">© 2026 KK CREATOR. Powered by Socio Commerce.</p>
+        <p class="text-gray-400">© <span id="current-year"></span> KK CREATOR. Powered by Socio Commerce.</p>
     </footer>
 
 </body>

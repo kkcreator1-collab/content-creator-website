@@ -161,7 +161,7 @@
         <p class="text-gray-400 max-w-2xl mx-auto px-6">Learn how to enhance your online presence, create smarter
             content, and grow faster using AI-powered tools.</p>
         <br>
-        <p class="text-gray-400">© 2026 KK CREATOR. All rights reserved.</p>
+        <p class="text-gray-400">© <span id="current-year"></span> KK CREATOR. All rights reserved.</p>
     </footer>
 
 </body>

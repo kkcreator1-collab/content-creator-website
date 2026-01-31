@@ -63,7 +63,7 @@
     </main>
 
     <footer class="text-center py-10 bg-black/20">
-        <p class="text-gray-400">© 2026 KK CREATOR. All rights reserved.</p>
+        <p class="text-gray-400">© <span id="current-year"></span> KK CREATOR. All rights reserved.</p>
     </footer>
 </body>
 
