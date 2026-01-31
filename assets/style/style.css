@@ -88,15 +88,19 @@ nav a:hover {
 
 /* --- SOCIAL SECTION (FORCED SINGLE ROW) --- */
 .social-box-container {
-  display: flex; /* Changed from grid to flex to force a single row */
-  flex-wrap: nowrap; /* Prevents wrapping to multiple lines */
+  display: flex;
+  /* Changed from grid to flex to force a single row */
+  flex-wrap: nowrap;
+  /* Prevents wrapping to multiple lines */
   gap: 20px;
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  overflow-x: auto; /* Allows horizontal scrolling if screen is too narrow */
+  overflow-x: auto;
+  /* Allows horizontal scrolling if screen is too narrow */
   padding: 20px 10px;
-  -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  -webkit-overflow-scrolling: touch;
+  /* Smooth scrolling on iOS */
 }
 
 /* Hide scrollbar for a cleaner look while keeping functionality */
@@ -106,7 +110,8 @@ nav a:hover {
 
 .social-box {
   background: #fff;
-  flex: 0 0 280px; /* Fixed width prevents squishing in the row */
+  flex: 0 0 280px;
+  /* Fixed width prevents squishing in the row */
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
@@ -135,14 +140,31 @@ nav a:hover {
 }
 
 /* Platform Colors */
-.facebook a { background: #1877f2; }
-.instagram a { background: #e1306c; }
-.youtube a { background: #ff0000; }
-.snapchat a { background: #fffc00; color: #000; }
-.twitter a { background: #1da1f2; }
+.facebook a {
+  background: #1877f2;
+}
+
+.instagram a {
+  background: #e1306c;
+}
+
+.youtube a {
+  background: #ff0000;
+}
+
+.snapchat a {
+  background: #fffc00;
+  color: #000;
+}
+
+.twitter a {
+  background: #1da1f2;
+}
 
 /* --- IMAGES & ANIMATIONS --- */
-.reveal, .glass-card, img {
+.reveal,
+.glass-card,
+img {
   max-width: 100%;
   height: auto;
   opacity: 1 !important;
@@ -150,37 +172,68 @@ nav a:hover {
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.3; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.3;
+  }
 }
 
-.blink { animation: blink 1s infinite; }
+.blink {
+  animation: blink 1s infinite;
+}
 
 /* --- CONSOLIDATED RESPONSIVENESS --- */
 @media (max-width: 768px) {
-  body { padding-top: 70px; }
-  header { padding-top: 100px; }
-  h1 { font-size: clamp(2rem, 8vw, 4rem) !important; }
-  
-  nav .flex.gap-8 { display: none; } /* Mobile nav links hidden */
-  
+  body {
+    padding-top: 70px;
+  }
+
+  header {
+    padding-top: 100px;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 4rem) !important;
+  }
+
+  nav .flex.gap-8 {
+    display: none;
+  }
+
+  /* Mobile nav links hidden */
+
   section {
     padding-left: 1.5rem !important;
     padding-right: 1.5rem !important;
   }
 
   .social-box {
-    flex: 0 0 240px; /* Slightly smaller boxes on mobile */
+    flex: 0 0 240px;
+    /* Slightly smaller boxes on mobile */
   }
 }
 
 @media (pointer: coarse) {
-  button, a {
+
+  button,
+  a {
     min-height: 44px;
     display: inline-flex;
     align-items: center;
@@ -188,7 +241,7 @@ nav a:hover {
   }
 }
 
-.social-section{
+.social-section {
   text-align: center;
   text-decoration: solid;
   font-weight: bold;

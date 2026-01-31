@@ -109,7 +109,9 @@
 
     <br>
     <section class="social-section">
-        <h2>Follow Us on Social Media</h2>
+        <p class="social-desc text-2xl font-semibold whitespace-nowrap">
+            Follow Us on Social Media
+        </p>
         <p class="social-desc text-2xl font-semibold whitespace-nowrap">
             Stay connected with us for latest updates, competitions, tips and announcements.
         </p>
