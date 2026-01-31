@@ -266,3 +266,10 @@ img {
 .social-box.snapchat a {
   color: #000000 !important;
 }
+
+.trophy-image {
+    /* This creates a rough hexagonal/diamond crop around the center */
+    clip-path: polygon(50% 0%, 100% 30%, 80% 100%, 20% 100%, 0% 30%);
+    object-fit: contain;
+    background: transparent;
+}
