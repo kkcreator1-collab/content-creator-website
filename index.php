@@ -36,10 +36,10 @@
 
     <header class="text-center pt-14 pb-10 px-4">
         <div class="flex flex-col md:flex-row items-center justify-center gap-6 mb-6">
-            
-        <!-- Logo Image -->
-        <img src="assets/images/icon.jpeg" alt="KK Creator Logo"
-                class="reveal w-24 h-auto rounded-lg shadow-lg opacity-0"> 
+
+            <!-- Logo Image -->
+            <img src="assets/images/icon.jpeg" alt="KK Creator Logo"
+                class="reveal w-24 h-auto rounded-lg shadow-lg opacity-0">
 
             <div class="flex flex-col items-center">
                 <div
@@ -108,56 +108,56 @@
 
     </section>
 
-        <br>
-        <section class="social-section">
-            <h2>Follow Us on Social Media</h2>
-            <p class="social-desc text-2xl font-semibold whitespace-nowrap">
-                Stay connected with us for latest updates, competitions, tips and announcements.
-            </p>
+    <br>
+    <section class="social-section">
+        <h2>Follow Us on Social Media</h2>
+        <p class="social-desc text-2xl font-semibold whitespace-nowrap">
+            Stay connected with us for latest updates, competitions, tips and announcements.
+        </p>
 
-            <div class="social-box-container flex flex-wrap gap-8 justify-center">
-                <!-- Facebook -->
-                <div class="social-box facebook h-[350px] flex flex-col justify-between items-center p-6">
-                    <img src="assets/images/facebook.jpeg" alt="Facebook Icon" class="social-icon">
-                    <h3>Facebook</h3>
-                    <p>Join our Facebook community for daily updates and discussions.</p>
-                    <a href="https://www.facebook.com" target="_blank">Visit Page</a>
-                </div>
-                <!-- Instagram -->
-                <div class="social-box instagram mx-auto">
-                    <img src="assets/images/instagram.jpeg" alt="Instagram Icon" class="social-icon">
-                    <h3>Instagram</h3>
-                    <p>Follow us for reels, stories and behind-the-scenes content.</p>
-                    <a href="https://www.instagram.com" target="_blank">Follow Now</a>
-                </div>
-                <!-- YouTube -->
-                <div class="social-box youtube h-[350px] flex flex-col justify-between items-center">
-                    <img src="assets/images/youtube.jpeg" alt="YouTube Icon" class="social-icon">
-                    <h3>YouTube</h3>
-                    <p>Subscribe to watch tutorials, events and exclusive videos.</p>
-                    <a href="https://www.youtube.com" target="_blank">Subscribe</a>
-                </div>
-                <!-- Snapchat -->
-                <div class="social-box snapchat mx-auto">
-                    <img src="assets/images/snapchat.jpeg" alt="Snapchat Icon" class="social-icon">
-                    <h3>Snapchat</h3>
-                    <p>Follow us for daily snaps, updates and behind-the-scenes moments.</p>
-                    <a href="https://www.snapchat.com" target="_blank">Follow Now</a>
-                </div>
-                <!-- Twitter -->
-                <div class="social-box twitter h-[350px] flex flex-col justify-between items-center">
-                    <img src="assets/images/twitter.jpeg" alt="Twitter Icon" class="social-icon">
-                    <h3>Twitter</h3>
-                    <p>Follow us for latest updates, announcements and trending posts.</p>
-                    <a href="https://www.x.com" target="_blank">Follow Now</a>
-                </div>
-
+        <div class="social-box-container flex flex-wrap gap-8 justify-center">
+            <!-- Facebook -->
+            <div class="social-box facebook h-[350px] flex flex-col justify-between items-center p-6">
+                <img src="assets/images/facebook.jpeg" alt="Facebook Icon" class="social-icon">
+                <h3>Facebook</h3>
+                <p>Join our Facebook community for daily updates and discussions.</p>
+                <a href="https://www.facebook.com" target="_blank">Visit Page</a>
             </div>
+            <!-- Instagram -->
+            <div class="social-box instagram mx-auto">
+                <img src="assets/images/instagram.jpeg" alt="Instagram Icon" class="social-icon">
+                <h3>Instagram</h3>
+                <p>Follow us for reels, stories and behind-the-scenes content.</p>
+                <a href="https://www.instagram.com" target="_blank">Follow Now</a>
+            </div>
+            <!-- YouTube -->
+            <div class="social-box youtube h-[350px] flex flex-col justify-between items-center">
+                <img src="assets/images/youtube.jpeg" alt="YouTube Icon" class="social-icon">
+                <h3>YouTube</h3>
+                <p>Subscribe to watch tutorials, events and exclusive videos.</p>
+                <a href="https://www.youtube.com" target="_blank">Subscribe</a>
+            </div>
+            <!-- Snapchat -->
+            <div class="social-box snapchat mx-auto">
+                <img src="assets/images/snapchat.jpeg" alt="Snapchat Icon" class="social-icon">
+                <h3>Snapchat</h3>
+                <p>Follow us for daily snaps, updates and behind-the-scenes moments.</p>
+                <a href="https://www.snapchat.com" target="_blank">Follow Now</a>
+            </div>
+            <!-- Twitter -->
+            <div class="social-box twitter h-[350px] flex flex-col justify-between items-center">
+                <img src="assets/images/twitter.jpeg" alt="Twitter Icon" class="social-icon">
+                <h3>Twitter</h3>
+                <p>Follow us for latest updates, announcements and trending posts.</p>
+                <a href="https://www.x.com" target="_blank">Follow Now</a>
             </div>
 
-        </section>
+        </div>
+        </div>
 
-         <footer class="text-center mt-20 py-10 bg-black/20">
+    </section>
+
+    <footer class="text-center mt-20 py-10 bg-black/20">
         <h2 class="text-3xl font-bold mb-2">Grow your career with Socio Commerce</h2>
         <p class="text-gray-400 max-w-2xl mx-auto px-6">Learn how to enhance your online presence, create smarter
             content, and grow faster using AI-powered tools.</p>

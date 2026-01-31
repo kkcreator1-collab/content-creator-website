@@ -352,3 +352,55 @@ img {
 html {
   scroll-behavior: smooth;
 }
+
+/* Update the social-box to be fluid instead of fixed width */
+.social-box {
+  background: #fff;
+  width: 100%;
+  /* Change from 280px to 100% */
+  max-width: 320px;
+  /* Limit maximum width for larger screens */
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Ensure the container uses the grid properly */
+.social-box-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  /* Automatically adjusts columns */
+  gap: 20px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Fix the navigation bar to handle small screens */
+nav .flex.gap-8 {
+  display: none;
+  /* Hide standard links on mobile */
+}
+
+@media (min-width: 768px) {
+  nav .flex.gap-8 {
+    display: flex;
+    /* Show links on tablets and desktops */
+  }
+}
+
+/* Fix overlapping header content on small screens */
+header {
+  padding-top: 100px;
+  /* Added space for the fixed navbar */
+}
+
+header h1 {
+  font-size: clamp(2rem, 8vw, 4rem);
+  /* Responsive font size */
+}
