@@ -279,7 +279,7 @@ img {
     border: none !important;
     box-shadow: none !important; /* Removes the rectangular shadow */
 
-    background-blend-mode: overlay !important;
+    background-blend-mode: lighten !important;
     
     /* This creates the 'structure-only' look by adding a glow around the outline */
     filter: drop-shadow(0 0 15px rgba(236, 72, 153, 0.7)); 
