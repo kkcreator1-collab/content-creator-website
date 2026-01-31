@@ -215,6 +215,10 @@ img {
     font-size: clamp(2rem, 8vw, 4rem) !important;
   }
 
+  h2 {
+    font-size: clamp(2rem, 8vw, 4rem) !important;
+  }
+
   nav .flex.gap-8 {
     display: none;
   }
