@@ -23,10 +23,6 @@ body {
   animation: fadeInUp 0.8s ease-out forwards;
 }
 
-img[alt="KK Creator Logo"] {
-  display: none !important;
-}
-
 /* --- CLASSES MOVED OUTSIDE OF BODY BLOCK --- */
 
 .tricolor-btn {
@@ -348,6 +344,8 @@ img {
   max-width: 100%;
   height: auto;
   box-sizing: border-box;
+  opacity: 1 !important;
+  transition: opacity 0.8s ease-out;
 }
 
 /* 4. Smooth Scrolling for Navigation Links */
